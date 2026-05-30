@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消费者调研模拟平台</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>🔍 消费者调研模拟平台</h1>
+            <p class="subtitle">AI模拟真实消费者的调研回答</p>
+        </header>
+
+        <!-- 主体内容 -->
+        <main class="main-content">
+            <!-- 左侧：参数设置 -->
+            <section class="settings-panel">
+                <h2>消费者档案</h2>
+                
+                <!-- 消费者基础信息 -->
+                <div class="profile-info">
+                    <div class="info-item">
+                        <span class="label">年龄：</span>
+                        <span class="value">28岁</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">位置：</span>
+                        <span class="value">二线城市</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">月入：</span>
+                        <span class="value">8,000元</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">偏好：</span>
+                        <span class="value">高频护肤</span>
+                    </div>
+                </div>
+
+                <!-- 条件筛选 -->
+                <div class="filters-section">
+                    <h3>条件筛选</h3>
+                    
+                    <!-- 气候选择 -->
+                    <div class="filter-group">
+                        <label for="climate">气候条件</label>
+                        <select id="climate" class="select-input">
+                            <option value="">-- 选择气候 --</option>
+                            <option value="干燥">☀️ 干燥</option>
+                            <option value="闷热">🌡️ 闷热</option>
+                            <option value="多云">☁️ 多云</option>
+                            <option value="多雨">🌧️ 多雨</option>
+                            <option value="大风">💨 大风</option>
+                            <option value="炎热">🔥 炎热</option>
+                            <option value="干冷">❄️ 干冷</option>
+                        </select>
+                    </div>
+
+                    <!-- 肤质选择 -->
+                    <div class="filter-group">
+                        <label for="skin_type">肤质类型</label>
+                        <select id="skin_type" class="select-input">
+                            <option value="">-- 选择肤质 --</option>
+                            <option value="干皮">🏜️ 干皮</option>
+                            <option value="油皮">💧 油皮</option>
+                            <option value="混干皮">🌊 混干皮</option>
+                            <option value="混油皮">🌀 混油皮</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 右侧：调研问卷 -->
+            <section class="research-panel">
+                <h2>调研问卷</h2>
+                
+                <!-- 问题输入 -->
+                <div class="question-section">
+                    <label for="question">请输入你的调研问题</label>
+                    <textarea 
+                        id="question" 
+                        class="question-input" 
+                        placeholder="例如：你对什么样的护肤品最感兴趣？为什么？\n\n或者：你通常在哪里购买护肤品？为什么选择那个渠道？"
+                        rows="6"
+                    ></textarea>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="button-group">
+                    <button id="submit-btn" class="btn btn-primary" onclick="submitResearch()">
+                        🎯 获取消费者回答
+                    </button>
+                    <button id="reset-btn" class="btn btn-secondary" onclick="resetForm()">
+                        🔄 重置
+                    </button>
+                </div>
+
+                <!-- 加载状态 -->
+                <div id="loading" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>AI正在思考中...</p>
+                </div>
+
+                <!-- 错误提示 -->
+                <div id="error-message" class="error-message hidden"></div>
+
+                <!-- 回答结果 -->
+                <div id="result" class="result-section hidden">
+                    <div class="result-header">
+                        <h3>📝 消费者回答</h3>
+                        <button class="copy-btn" onclick="copyAnswer()">📋 复制</button>
+                    </div>
+                    <div id="answer-content" class="answer-content"></div>
+                    <div class="result-meta">
+                        <span id="result-climate" class="meta-item"></span>
+                        <span id="result-skin" class="meta-item"></span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
